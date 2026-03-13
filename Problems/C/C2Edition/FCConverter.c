@@ -4,6 +4,20 @@
 #define STEP 20   /*                       */ 
 
 
+/* 1-15 Functions improvement */
+float fahr_to_cels (int celsius) {
+    int fahr;
+    fahr = (celsius * 1.8 + 32.0);
+    return fahr;
+}
+
+float cels_to_fahr (int fahrenheit) {
+    int cels;
+    cels = (5.0/9.0) * (fahrenheit-32.0);
+    return cels;
+}
+
+
 /* Fahrenheit-Celsius Converter */
 // int main() {
 //     float fahr, celsius;
@@ -49,7 +63,7 @@ int main() {
     printf("............\n");
     
     for (fahr=UPPER; fahr>=LOWER; fahr=fahr-STEP) {
-        printf("%3d %6.1f |\n", fahr, (5.0/9.0) * (fahr-32.0));
+        printf("%3d %6.1f |\n", fahr, fahr_to_cels(fahr));
     }
     printf("............\n");
 }
