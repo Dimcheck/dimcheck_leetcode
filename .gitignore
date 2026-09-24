@@ -3,8 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+.zed/
+
 # C extensions
 *.so
+runme
 
 # Distribution / packaging
 .Python
