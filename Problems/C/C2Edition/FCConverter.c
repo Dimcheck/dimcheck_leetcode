@@ -5,15 +5,15 @@
 
 
 /* 1-15 Functions improvement */
-float fahr_to_cels (int celsius) {
-    int fahr;
+float cels_to_fahr (float celsius) {
+    float fahr;
     fahr = (celsius * 1.8 + 32.0);
     return fahr;
 }
 
-float cels_to_fahr (int fahrenheit) {
-    int cels;
-    cels = (5.0/9.0) * (fahrenheit-32.0);
+float fahr_to_cels (float fahr) {
+    float cels;
+    cels = (5.0/9.0) * (fahr-32.0);
     return cels;
 }
 
@@ -22,13 +22,13 @@ float cels_to_fahr (int fahrenheit) {
 // int main() {
 //     float fahr, celsius;
 //     fahr = LOWER; // fahr gets 0.0 from lower
-    
+
 //     printf("............\n");
 //     printf("  F\tC\n");
 //     printf("............\n");
 
 //     while (fahr <= UPPER) {
-//         celsius = (5.0/9.0) * (fahr-32.0);
+//         celsius = fahr_to_cels(fahr);
 //         printf("%3.0f %6.1f |\n", fahr, celsius);
 //         fahr = fahr + STEP;
 //     }
@@ -39,14 +39,14 @@ float cels_to_fahr (int fahrenheit) {
 /* Celsius-Fahrenheit Converter */
 // int main() {
 //     float fahr, celsius;
-//     celsius = LOWER; // celsius gets 0.0 from lower
+//     celsius = LOWER; // celsius gets 0.0 from LOWER
 
 //     printf("............\n");
 //     printf("  C\tF\n");
 //     printf("............\n");
 
 //     while (celsius <= UPPER) {
-//         fahr = (celsius * 1.8 + 32.0);
+//         fahr = cels_to_fahr(celsius);
 //         printf("%3.0f %6.1f |\n", celsius, fahr);
 //         celsius = celsius + STEP;
 //     }
@@ -56,14 +56,14 @@ float cels_to_fahr (int fahrenheit) {
 
 /* Fahrenheit-Celsius Converter in reverse order */
 int main() {
-    int fahr;
+    float fahr;
     
     printf("............\n");
-    printf("  C\tF\n");
+    printf("  F\tC\n");
     printf("............\n");
     
     for (fahr=UPPER; fahr>=LOWER; fahr=fahr-STEP) {
-        printf("%3d %6.1f |\n", fahr, fahr_to_cels(fahr));
+        printf("%3.0f %6.1f |\n", fahr, fahr_to_cels(fahr));
     }
     printf("............\n");
 }
