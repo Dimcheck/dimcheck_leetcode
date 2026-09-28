@@ -1,11 +1,67 @@
 #include <stdio.h>
 #include <ctype.h>
 
+#define IN 1  /* inside a word */
+#define OUT 0 /* otside a word */
+
 ///////////////
 /* EOF is -1 */
 /* :getchar: takes a single input character: WORLD -> W */
 /* Use Ctrl+D  to send EOF from keyboard*/
 //////////////
+
+/* print a horizontal histogram of different entities, like digits, letters, words, etc */
+int main() {
+    int history[200];
+    int d_counter, l_counter, w_counter, c_counter, word_state, c;
+    d_counter = l_counter = w_counter = c_counter = 0;
+    
+    word_state = OUT;
+    while ((c = getchar()) != EOF) {
+        if (isdigit(c)) {
+            ++d_counter;
+        }
+        else if (c == '\n') {
+            ++l_counter;
+            word_state = OUT;
+            ++w_counter;
+        
+        }
+        else if (c == ' ' || c == '\t') {
+            word_state = OUT;
+            ++w_counter;
+        
+        }
+        else {
+            word_state = IN;
+            ++c_counter;
+        }
+
+    }
+    
+    printf("\nDigits: %d \n", d_counter);
+    for (int i = 0; i < d_counter; ++i) {
+        printf("#");
+    }
+    
+    printf("\nLines: %d \n", l_counter);
+    for (int i = 0; i < l_counter; ++i) {
+        printf("#");
+    }
+    
+    printf("\nWords: %d \n", w_counter);
+    for (int i = 0; i < w_counter; ++i) {
+        printf("#");
+    }
+    
+    printf("\nCharacters: %d \n", c_counter);
+    for (int i = 0; i < c_counter; ++i) {
+        printf("#");
+    }
+    
+    printf("\n");
+}
+
 
 // int main() {
 //     int c;
@@ -38,62 +94,3 @@
 //     }
 //     printf("\n");
 // }
-
-
-/* print a horizontal histogram of different entities, like digits, letters, words, etc */
-int main() {
-    int history[200];
-    int d_counter, l_counter, w_counter, o_counter, g_counter;
-    d_counter = l_counter = w_counter = o_counter = g_counter = 0;
-    
-    int c = getchar(); 
-    while (c != EOF) {
-        if (isdigit(c)) {
-            ++d_counter;
-        }
-        else if (c == '\n' || c == '\t' || c == ' ') {
-            if (history[g_counter > 2]) {
-                if (isdigit(history[g_counter-2])) {
-                    ;
-                } 
-                else if (
-                    history[g_counter-2] != '\n' || 
-                    history[g_counter-2] != '\t' || 
-                    history[g_counter-2] != ' '
-                ) {
-                    ++w_counter;
-                }
-            }
-            ++o_counter;
-        }
-        else {
-            ++l_counter;
-        }
-        history[g_counter] = c;
-        ++g_counter;
-        c = getchar();
-    }
-    
-    printf("\nDigits: %d \n", d_counter);
-    for (int i = 0; i < d_counter; ++i) {
-        printf("#");
-    }
-    
-    printf("\nLetters: %d \n", l_counter);
-    for (int i = 0; i < l_counter; ++i) {
-        printf("#");
-    }
-    
-    printf("\nWords: %d \n", w_counter);
-    for (int i = 0; i < w_counter; ++i) {
-        printf("#");
-    }
-    
-    printf("\nOther: %d \n", o_counter);
-    for (int i = 0; i < o_counter; ++i) {
-        printf("#");
-    }
-    
-    printf("\n");
-    
-}
