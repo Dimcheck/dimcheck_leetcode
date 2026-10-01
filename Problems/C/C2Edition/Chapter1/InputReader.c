@@ -15,7 +15,7 @@ int main() {
     int history[200];
     int d_counter, l_counter, w_counter, c_counter, word_state, c;
     d_counter = l_counter = w_counter = c_counter = 0;
-    
+
     word_state = OUT;
     while ((c = getchar()) != EOF) {
         if (isdigit(c)) {
@@ -25,12 +25,12 @@ int main() {
             ++l_counter;
             word_state = OUT;
             ++w_counter;
-        
+
         }
         else if (c == ' ' || c == '\t') {
             word_state = OUT;
             ++w_counter;
-        
+
         }
         else {
             word_state = IN;
@@ -38,27 +38,27 @@ int main() {
         }
 
     }
-    
+
     printf("\nDigits: %d \n", d_counter);
     for (int i = 0; i < d_counter; ++i) {
         printf("#");
     }
-    
+
     printf("\nLines: %d \n", l_counter);
     for (int i = 0; i < l_counter; ++i) {
         printf("#");
     }
-    
+
     printf("\nWords: %d \n", w_counter);
     for (int i = 0; i < w_counter; ++i) {
         printf("#");
     }
-    
+
     printf("\nCharacters: %d \n", c_counter);
     for (int i = 0; i < c_counter; ++i) {
         printf("#");
     }
-    
+
     printf("\n");
 }
 
